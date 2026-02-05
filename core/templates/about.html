@@ -1,0 +1,435 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>County Government of Kilifi</title>
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+
+  <!-- Favicons -->
+  <link href="{% static 'assets/img/CGK.png' %}" rel="icon">
+  <link href="{% static 'assets/img/CGK11.png' %}" rel="apple-touch-icon">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/aos/aos.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+
+  <!-- Main CSS File -->
+  <link href="{% static 'assets/css/main.css' %}" rel="stylesheet">
+     <style>
+    .branding {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1030;
+      background: #ccc;
+      transition: background 0.3s ease, box-shadow 0.3s ease;
+      backdrop-filter: blur(6px);
+    }
+
+    .nav-link,
+    .nav-link:focus {
+      color: white !important;
+    }
+
+    .nav-link:hover {
+      color: #0dcaf0;
+    }
+
+    .footer {
+    background: linear-gradient(to right, #2e7d32, #1b5e20);
+    color: white;
+  }
+
+  .footer a {
+    transition: all 0.3s ease;
+  }
+
+  .footer a:hover {
+    color: #ffffff !important;
+    text-decoration: underline;
+  }
+
+  .footer h6 {
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+
+  .footer .text-white-50 {
+    color: rgba(255, 255, 255, 0.7) !important;
+  }
+</style>
+<style>
+    table th, table td {
+      vertical-align: middle;
+      font-size: 0.9rem;
+    }
+    thead th {
+      background-color: #0c5e36;
+      color: white;
+      text-align: center;
+    }
+    h2 {
+      color: #0c5e36;
+    }
+  </style>
+</head>
+
+<body class="index-page">
+<header class="header sticky-top" style="height: 50px;">
+  <div id="branding" class="branding">
+    <div class="container d-flex justify-content-between align-items-center py-3">
+      <!-- Logo and Site Name -->
+      <a href="{% url 'home' %}" class="d-flex align-items-center text-white text-decoration-none">
+        <img src="{% static 'assets/img/CGK11.png' %}" alt="Kilifi Logo" height="55" class="me-2">
+          <p class="mb-0 text-black text-center">Permit Request <br> System</p>
+      </a>
+
+      <!-- Nav and CTA Button Wrapper -->
+      <div class="d-flex align-items-center ms-auto">
+        <!-- Desktop Navigation -->
+        <nav id="navmenu" class="navmenu d-none d-xl-block">
+          <ul class="nav">
+            <li class="nav-item"><a href="{% url 'home' %}" class="nav-link">Home</a></li>
+            <li class="nav-item"><a href="#Services" class="nav-link">Services</a></li>
+            <li class="nav-item"><a href="{% url 'readmore' %}" class="nav-link">About</a></li>
+              <li><a href="{% url 'contact' %}" class="nav-link" >Contact Us</a></li>
+              {% if request.user.is_staff %}
+                 <li><a href="{% url 'clients' %}" class="nav-link" >Clients</a></li>
+              {% endif %}
+          </ul>
+        </nav>
+          <!-- permit request Button -->
+        <a class="btn btn-success ms-4 text-white" href="{% url 'permits'%}"><b>Request Permit</b></a>
+      </div>
+      <!-- Mobile Nav Toggle -->
+      <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+    </div>
+  </div>
+</header>
+
+  <main class="main">
+      <!-- Hero Section -->
+    <section id="hero" class="hero section">
+        <div class="hero-section">
+        <div class="container text-white py-2">
+            <h2 class="mb-0 text-white text-center"> <strong>Department of Water, Environment, Forestry, Natural Resources & Solid Waste Management</strong></h2>
+            <br>
+            <h3 class="permit-title text-center">Permit Request</h3>
+            <p class="par text-center">
+              The Permit Request System is a digital initiative developed by the Department of Environment, Forestry,
+            Natural Resources & Solid Waste Management under the County Government of Kilifi. Our mission is to promote
+            environmental responsibility by streamlining the process of applying for and issuing environmental permits online, across Kilifi County.
+            </p>
+        </div>
+      </div>
+        <!-- Services Section -->
+    <section id="services" class="services section">
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h3 class="permit-title"><b>Request a Permit?</b></h3>
+        <p>Here’s a brief overview of some of the permits available:</p>
+      </div><!-- End Section Title -->
+
+      <div class="container">
+
+        <div class="row gy-4">
+
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="service-item  position-relative">
+              <div class="icon">
+                <i class="fas fa-volume-mute"></i>
+              </div>
+              <a href="{% url 'noisepermit' %}" class="stretched-link">
+                <h3><strong>Noise Permit</strong></h3>
+              </a>
+              <p>Required for events with loud music, construction work or machinery that generates sustained noise.</p>
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+            <div class="service-item position-relative">
+              <div class="icon">
+                <i class="fas fa-tree"></i><i class="fas fa-ban" style="color: red; margin-left: -10px;"></i>
+              </div>
+              <a href="{% url 'treepermit' %}" class="stretched-link">
+                <h3><strong>Tree Permit</strong></h3>
+              </a>
+                <p>Necessary for felling indigenous or protected trees or for commercial logging.</p>
+            </div>
+          </div><!-- End Service Item -->
+
+            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+            <div class="service-item position-relative">
+              <div class="icon">
+                <i class="fas fa-tree"></i><i class="fas fa-ban" style="color: red; margin-left: -10px;"></i>
+              </div>
+              <a href="{% url 'forestpermit' %}" class="stretched-link">
+                <h3><strong>Forest Permit</strong></h3>
+              </a>
+              <p>Needed for starting a tree nursery, harvesting timber or charcoal production.</p>
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+            <div class="service-item position-relative">
+              <div class="icon">
+                <i class="fas fa-tree"></i><i class="fas fa-ban" style="color: red; margin-left: -10px;"></i>
+              </div>
+              <a href=" " class="stretched-link">
+                <h3><strong>Vibration Permit</strong></h3>
+              </a>
+              <p>Required for using heavy machinery, mining or large-scale drilling.</p>
+            </div>
+          </div><!-- End Service Item -->
+
+        </div>
+
+      </div>
+
+        <div class="container py-4">
+    <div class="text-center mb-4">
+      <img src="logo.png" alt="Kilifi County Logo" height="80">
+      <h2>County Government of Kilifi</h2>
+      <p class="lead">Department of Water, Environment, Forestry,<br>Natural Resources and Solid Waste Management</p>
+      <h4 class="text-success fw-bold">Our Service Delivery Standards</h4>
+    </div>
+
+    <div class="container py-4">
+    <div class="text-center mb-4">
+      <img src="logo.png" alt="Kilifi County Logo" height="80">
+      <h2>County Government of Kilifi</h2>
+      <p class="lead">Department of Water, Environment, Forestry,<br>Natural Resources and Solid Waste Management</p>
+      <h4 class="text-success fw-bold">Our Service Delivery Standards</h4>
+    </div>
+
+    <div class="table-responsive">
+      <table class="table table-bordered table-striped">
+        <thead>
+          <tr>
+            <th>Service Offered</th>
+            <th>Requirements from Client</th>
+            <th>Cost (KES)</th>
+            <th>Turnaround Time</th>
+            <th>Approval Stages / Departments</th>
+            <th>Officer Responsible</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Valuation of Forest Products</td>
+            <td>Letter from department / client</td>
+            <td>None</td>
+            <td>2 Days</td>
+            <td>Environmental Office → Finance</td>
+            <td>Forestry Officer</td>
+          </tr>
+          <tr>
+            <td>Tree Felling Permit (private land)</td>
+            <td>Application form, ID copy</td>
+            <td>1,000 / tree</td>
+            <td>3–5 Days</td>
+            <td>Environmental Office → County Exec</td>
+            <td>Forestry Officer</td>
+          </tr>
+          <tr>
+            <td>Forest Product Harvest Permit</td>
+            <td>Permit form, ID copy, map</td>
+            <td>Varies (based on volume)</td>
+            <td>3–5 Days</td>
+            <td>Environmental Office → County Exec</td>
+            <td>Forestry Officer</td>
+          </tr>
+          <tr>
+            <td>Corporate Waste Collection Agreement</td>
+            <td>Application letter, Company PIN</td>
+            <td>Per tonnage</td>
+            <td>7 Days</td>
+            <td>SWM Section → Legal unit</td>
+            <td>Environmental Officer</td>
+          </tr>
+          <tr>
+            <td>Permit for Environmental Cleanup Events</td>
+            <td>Request letter, route map</td>
+            <td>Free</td>
+            <td>1 Day</td>
+            <td>Environment & Waste Dept</td>
+            <td>Environmental Officer</td>
+          </tr>
+          <tr>
+            <td>Permit for Burning Waste</td>
+            <td>Application form, ID, waste details</td>
+            <td>Free</td>
+            <td>1 Day</td>
+            <td>Environment Dept → Safety Officer</td>
+            <td>Environmental Officer</td>
+          </tr>
+          <tr>
+            <td>Dewatering / Quaternary Charges</td>
+            <td>Application + NEMA license + map</td>
+            <td>1,000–10,000</td>
+            <td>1 Hour</td>
+            <td>Water & Environment Dept</td>
+            <td>Environmental Officer</td>
+          </tr>
+          <tr>
+            <td>Permit for Excavation / Vibration Work</td>
+            <td>Application form + site map</td>
+            <td>40,000</td>
+            <td>30 Mins</td>
+            <td>Environment Dept → Technical Team</td>
+            <td>Engineering Officer</td>
+          </tr>
+          <tr>
+            <td>Dumping Charges Permit</td>
+            <td>Application + NEMA license</td>
+            <td>Above 1,000 m³: 3,000<br>Below 1,000 m³: 700</td>
+            <td>1 Hour</td>
+            <td>SWM Section → Environment Dept</td>
+            <td>SWM Officer</td>
+          </tr>
+          <tr>
+            <td>Permit for Private Waste Collection</td>
+            <td>Request letter</td>
+            <td>16,000 / month</td>
+            <td>2 Days</td>
+            <td>SWM Section → Legal unit</td>
+            <td>SWM Officer</td>
+          </tr>
+          <!-- Add more here if banner includes more -->
+        </tbody>
+      </table>
+    </div>
+
+    <div class="mt-5 text-center">
+      <h5>Contacts & Feedback Mechanism</h5>
+      <p><strong>Working Hours:</strong> Mon–Fri : 8 AM–1 PM & 2 PM–5 PM</p>
+      <p>For Complaints and Compliments:</p>
+      <p>
+        County Executive Committee Member<br>
+        Department of Water, Environment, Forestry,<br>
+        Natural Resources and Solid Waste Management
+      </p>
+      <p>
+        📍 Malindi Road, Off Diamond Club (KIWASCO Offices)<br>
+        📞 +254 774 186 311<br>
+        📧 water@kilifi.go.ke | environment@kilifi.go.ke<br>
+        🌐 <a href="http://www.kilifi.go.ke" target="_blank">www.kilifi.go.ke</a>
+      </p>
+    </div>
+  </div>
+</body>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact section">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Location</h2>
+      </div><!-- End Section Title -->
+
+      <div class="mb-5" data-aos="fade-up" data-aos-delay="200">
+            <iframe
+                style="border:0; width: 100%; height: 370px;"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15955.950636032712!2d39.83865075836618!3d-3.6281845741109577!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x183fddd1a26e2681%3A0xabe41ddaebeb5c07!2sDepartment%20of%20Water%2C%20Environment%2C%20Forestry%2C%20Natural%20Resources%20%26%20Solid%20Waste%20Management!5e0!3m2!1sen!2ske!4v1716473467191!5m2!1sen!2ske"
+                frameborder="0"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+      </div><!-- End Google Maps -->
+    </section><!-- /Contact Section -->
+  </main>
+<footer class="footer pt-5 pb-3">
+  <div class="container">
+    <div class="row gy-4">
+      <!-- Logo & About -->
+      <div class="col-lg-4 col-md-6">
+        <div class="d-flex align-items-center mb-3">
+          <a href="{% url 'home' %}" class="d-flex align-items-center text-decoration-none text-white">
+            <img src="{% static 'assets/img/CGK11.png' %}" alt="NoisePermit Logo" style="height: 50px;" class="me-3" height="60">
+            <div>
+              <h5 class="mb-0" style="color: #3dd5f3">Permit Request System</h5>
+              <small>County Government of Kilifi</small>
+            </div>
+          </a>
+        </div>
+        <small>
+          The Department of Environment, Forestry, Natural Resources & Solid Waste Management
+        </small>
+      </div>
+
+      <!-- Services -->
+      <div class="col-lg-3 col-md-6">
+        <h6 class="col-lg-3 col-md-6 text-center" style="color: #3FBBC0FF;">ADDRESS</h6>
+        <ul class="list-unstyled">
+            <a href="">
+                <p class="text-white-50 mb-1">9RCX+PFC, Upendo Methodist Junction, Kilifi Water Road, Next To Methodist Church, Kilifi</p>
+                <p class="text-white-50 mb-3">P.O. Box 971-80108</p>
+            </a>
+        </ul>
+      </div>
+
+      <!-- Contact -->
+      <div class="col-lg-3 col-md-6 text-center">
+        <h6 style="color: #3FBBC0FF;">CONTACT DETAILS</h6>
+
+        <p class="mb-1"><i class="bi bi-telephone-fill me-2"></i>+254 110 440 006</p>
+        <p class="mb-3"><i class="bi bi-envelope-fill me-2"></i><a href="mailto:emailaddress@gmail.com" class="text-white-50">emailaddress@gmail.com</a></p>
+            <a href="#" class="text-white-50 fs-5"><i class="bi bi-facebook"></i></a>
+          <a href="#" class="text-white-50 fs-5"><i class="bi bi-twitter-x"></i></a>
+          <a href="#" class="text-white-50 fs-5"><i class="bi bi-instagram"></i></a>
+          <a href="#" class="text-white-50 fs-5"><i class="bi bi-linkedin"></i></a>
+        <div class="d-flex gap-3 mt-2">
+
+        </div>
+      </div>
+    </div>
+      <hr class="text-white my-4">
+      <div class="text-center mt-4 text-white-50 text-center">
+      <p>© 2026 <a href="{% url 'home' %}" style="color: white">Permit Request System</a> - County Government of Kilifi
+          <br> All Rights Reserved</p>
+    </div>
+  </div>
+</footer>
+
+  <!-- Preloader -->
+  <div id="preloader"></div>
+
+  <!-- Vendor JS Files -->
+  <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/php-email-form/validate.js' %}"></script>
+  <script src="{% static 'assets/vendor/aos/aos.js' %}"></script>
+  <script src="{% static 'assets/vendor/glightbox/js/glightbox.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/purecounter/purecounter_vanilla.js' %}"></script>
+  <script src="{% static 'assets/vendor/swiper/swiper-bundle.min.js' %}"></script>
+
+  <!-- Main JS File -->
+  <script src="{% static 'assets/js/main.js' %}"></script>
+
+<script>
+(function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="WK0iUwmVw7dLaWUZFE_ia";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();
+</script>
+
+<!-- AOS JavaScript -->
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init();
+</script>
+
+</body>
+
+</html>

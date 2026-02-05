@@ -1,0 +1,78 @@
+.permitform {
+      max-width: 500px;
+      margin: 40px auto;
+      background-color: #cfe2ff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      text-align: center;
+      color: #333;
+    }
+
+    p {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: 600;
+    }
+
+    input[type="text"],
+    input[type="date"],
+    input[type="time"] {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+
+    button {
+      width: 25%;
+      padding: 12px;
+      background-color: #3FBBC0FF;
+      color: black;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #3dd5f3;
+    }
+
+    .footer {
+  background: linear-gradient(to bottom, #4caf50, #1b5e20);
+  color: white;
+}
+
+.footer h6 {
+  font-weight: bold;
+    color: #3dd5f3;
+}
+
+.footer a:hover {
+  color: #ffffff !important;
+  text-decoration: underline;
+}
+
+.footer {
+  background: linear-gradient(to right, #2e7d32, #1b5e20);
+  color: white;
+}
+.footer a:hover {
+  color: #fff !important;
+  text-decoration: underline;
+}

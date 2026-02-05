@@ -1,0 +1,266 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>County Government of Kilifi</title>
+
+  <!-- Favicons -->
+  <link href="{% static 'assets/img/logo/CGK11.png' %}" rel="icon">
+  <link href="{% static 'assets/img/logo/CGK11.png' %}" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&family=Poppins&family=Raleway&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/aos/aos.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/css/main.css' %}" rel="stylesheet">
+
+  <style>
+    .branding {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1030;
+      background: #ccc;
+      transition: background 0.3s ease, box-shadow 0.3s ease;
+      backdrop-filter: blur(6px);
+      padding: 10px 0;
+    }
+
+    .nav-link,
+    .nav-link:focus {
+      color: black !important;
+    }
+
+    .nav-link:hover {
+      color: #0dcaf0;
+    }
+
+    @media (max-width: 767.98px) {
+  .branding .container {
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+  }
+
+  .branding a.d-flex {
+    flex-direction: row !important;
+    align-items: center !important;
+    gap: 8px;
+  }
+
+  .branding img {
+    max-height: 55px;
+    height: auto;
+  }
+
+  .branding small {
+    font-size: 12px;
+    line-height: 1.6;
+    color: black;
+  }
+
+  .btn {
+    font-size: 12px;
+    padding: 6px 6px;
+  }
+        #mobile-menu a {
+  border-bottom: 1px solid #ddd;
+}
+
+#mobile-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: #f8f9fa;
+  z-index: 1029;
+  transition: all 0.3s ease;
+}
+
+  .mobile-nav-toggle {
+    font-size: 24px;
+    color: #000;
+    margin-left: 10px;
+  }
+
+}
+      #message-box {
+  transition: opacity 1s ease-in-out;
+}
+
+#message-box.hidden {
+  opacity: 0;
+}
+  </style>
+</head>
+
+<body class="index-page">
+
+<header class="header sticky-top">
+  <div id="branding" class="branding">
+
+    <div class="container d-flex justify-content-between align-items-center py-3">
+        <!-- Logo and Site Name -->
+        <a href="{% url 'home' %}" class="d-flex align-items-center text-white text-decoration-none gap-1">
+            <img src="{% static 'assets/img/logo/CGK11.png' %}" alt="Kilifi Logo" height="60" style="margin-right: 4px">
+            <div class="d-flex flex-column lh-sm text-black">
+                <small class="mb-0"><b>Permit Request</b></small>
+                <small class="mb-0"><b>System</b></small>
+            </div>
+        </a>
+
+      <!-- Nav and CTA Button Wrapper -->
+      <div class="d-flex align-items-center ms-auto">
+        <!-- Desktop Navigation -->
+        <nav id="navmenu" class="navmenu d-none d-xl-block">
+          <ul class="nav">
+            <li class="nav-item"><a href="{% url 'home' %}" class="nav-link">Home</a></li>
+            <li class="nav-item"><a href="{% url 'readmore' %}" class="nav-link">About</a></li>
+            <li class="nav-item"><a href="{% url 'contact' %}" class="nav-link">Contact Us</a></li>
+            {% if request.user.is_staff %}
+              <li class="nav-item"><a href="{% url 'clients' %}" class="nav-link">Clients</a></li>
+              <li class="nav-item"><a href="{% url 'requestednoisepermits' %}" class="nav-link">Noisepermits</a></li>
+            {% endif %}
+            {% if user.is_authenticated %}
+                <li class="nav-item"><a href="{% url 'logout' %}" class="nav-link">Logout</a></li>
+            {% else %}
+                <li class="nav-item"><a href="{% url 'login' %}" class="nav-link">Login</a></li>
+            {% endif %}
+          </ul>
+        </nav>
+      <!-- Mobile Navigation Menu -->
+        <div id="mobile-menu" class="d-xl-none d-none flex-column bg-light px-3 py-3 text-black">
+            <a href="{% url 'home' %}" class="nav-link text-dark py-2">Home</a>
+            <a href="{% url 'readmore' %}" class="nav-link text-dark py-2">About</a>
+            <a href="{% url 'contact' %}" class="nav-link text-dark py-2">Contact Us</a>
+            {% if request.user.is_staff %}
+                <a href="{% url 'clients' %}" class="nav-link text-dark py-2">Clients</a>
+                <a href="{% url 'requestednoisepermits' %}" class="nav-link">Noisepermits</a>
+            {% endif %}
+            {% if user.is_authenticated %}
+                <a href="{% url 'logout' %}" class="btn btn-danger mt-2">Logout</a>
+            {% else %}
+                <a href="{% url 'login' %}" class="btn btn-success mt-2">Login</a>
+            {% endif %}
+
+        </div>
+      </div>
+      <!-- Mobile Nav Toggle -->
+      <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+    </div>
+  </div>
+</header>
+
+<main class="main">
+  <!-- Services Section -->
+    <br>
+    <section id="services" class="services section">
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h3 class="permit-title"><b>Request a Permit</b></h3>
+        <p>Kindly Select the Permit you wish to apply for.</p>
+      </div><!-- End Section Title -->
+
+      <div class="container">
+
+        <div class="row gy-4">
+
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="service-item  position-relative">
+              <div class="icon">
+                <i class="fas fa-volume-mute"></i>
+              </div>
+              <a href="{% url 'noisepermit' %}" class="stretched-link">
+                <h3><strong>Noise Permit</strong></h3>
+              </a>
+              <p>Planning an event or activity that may generate excessive sound? Please be aware that a noise permit is required to ensure minimal
+                  disruption to the community.</p>
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+            <div class="service-item position-relative">
+              <div class="icon">
+                <i class="fas fa-tree"></i><i class="fas fa-ban" style="color: red; margin-left: -10px;"></i>
+              </div>
+              <a href="{% url 'treepermit' %}" class="stretched-link">
+                <h3><strong>Tree Permit</strong></h3>
+              </a>
+                <p>Tree cutting requires a permit to ensure it's done responsibly and sustainably. This helps prevent deforestation, protect biodiversity and combat climate change.</p>
+            </div>
+          </div><!-- End Service Item -->
+
+            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+            <div class="service-item position-relative">
+              <div class="icon">
+                <i class="fas fa-tree"></i><i class="fas fa-ban" style="color: red; margin-left: -10px;"></i>
+              </div>
+              <a href="{% url 'forestpermit' %}" class="stretched-link">
+                <h3><strong>Forest Permit</strong></h3>
+              </a>
+              <p>Planning to cut trees or use forest resources? A forest permit is required to ensure legal use and protect our environment from deforestation and degradation.</p>
+            </div>
+          </div><!-- End Service Item -->
+        </div>
+      </div>
+    </section><!-- /Services Section -->
+        <div class="text-center">
+            <a href="{% url 'readmore' %}">
+            <p style="font-size: 0.80rem;" class="text-black">
+                © 2026 Permit Request System - County Government of Kilifi
+                <br> All Rights Reserved
+            </p>
+            </a>
+        </div>
+</main>
+
+<!-- Scroll Top -->
+<a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+<!-- Preloader -->
+<div id="preloader"></div>
+
+<script>
+  window.addEventListener('load', function () {
+    var preloader = document.getElementById('preloader');
+    if (preloader) {
+      preloader.style.display = 'none';
+    }
+  });
+</script>
+
+<!-- Vendor JS Files -->
+<script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'assets/vendor/php-email-form/validate.js' %}"></script>
+<script src="{% static 'assets/vendor/aos/aos.js' %}"></script>
+<script src="{% static 'assets/vendor/glightbox/js/glightbox.min.js' %}"></script>
+<script src="{% static 'assets/vendor/purecounter/purecounter_vanilla.js' %}"></script>
+<script src="{% static 'assets/vendor/swiper/swiper-bundle.min.js' %}"></script>
+<script src="{% static 'assets/js/main.js' %}"></script>
+
+<!-- Mobile Nav Toggle Script -->
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const toggle = document.querySelector('.mobile-nav-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    toggle.addEventListener('click', () => {
+      mobileMenu.classList.toggle('d-none');
+      toggle.classList.toggle('bi-list');
+      toggle.classList.toggle('bi-x');
+    });
+  });
+</script>
+
+</body>
+</html>
