@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "django-insecure-#2%5swc_!lvq1ggu75njgi#n$v1b!7-q#lmnob)+4x#^p6pcf2"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = [
     '127.0.0.1',
@@ -121,7 +121,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
-STATIC_URL = "static/"
+STATIC_URL = "/static/"
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 
 LOGIN_URL = '/login/'
 
@@ -139,10 +140,6 @@ MPESA_PASSKEY = 'bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c91
 
 MPESA_TEST_PHONE = '254708374149'
 MPESA_CALLBACK_URL = 'https://ce05-197-248-52-178.ngrok-free.app/mpesa/callback/' # replace with your public URL
-
-CSRF_TRUSTED_ORIGINS = [
-    'https://17e5ba9fe9fe.ngrok-free.app',
-]
 
 
 
