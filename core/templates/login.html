@@ -92,9 +92,15 @@
 
           <div class="text-center mt-3 p-0">
               <p style="font-size: 0.80rem;">
-                <strong>
-                    ©{new Date().getFullYear()} Permit Request System - County Government of Kilifi
-                </strong>
+                    <p style="font-size: 0.80rem;">
+    <strong>
+        &copy; <span id="year"></span> Permit Request System - County Government of Kilifi
+    </strong>
+</p>
+
+<script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+</script>
               </p>
           </div>
     </div>
